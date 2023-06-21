@@ -47,7 +47,7 @@ const Profile = () => {
 								<p className="w-60 h-5 bg-neutral-300 rounded-lg animate-pulse"></p>
 							)}
 							<p className="font-medium">
-								{bio && bio.length > 35 ? `${bio.slice(0, 35)}...` : bio}
+								{bio && bio.length > 30 ? `${bio.slice(0, 30)}...` : bio}
 							</p>
 							<PencilSquareIcon
 								onClick={updateBioModal.onOpen}

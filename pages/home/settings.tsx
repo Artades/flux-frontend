@@ -11,6 +11,7 @@ import * as Api from "@/api";
 import { useRouter } from "next/router";
 import { ClipboardDocumentIcon } from "@heroicons/react/24/outline";
 import { Loader2 } from "lucide-react";
+import Link from "next/link";
 
 const Settings = () => {
 	const userData = useUserDataStore();
@@ -52,13 +53,9 @@ const onClickCopy = useCallback((link: string) => {
 						<AccordionTrigger>My personal link</AccordionTrigger>
 						<AccordionContent>
 							<div className="flex items-center gap-2 cursor-pointer">
-								Your link:
-								<span
-									onClick={redirectToLink}
-									className=" text-accent hover:blur-[1px] transition"
-								>
-									{link}
-								</span>
+								<Link href={link}>
+									<p className="text-accent border border-accent px-2 py-1 text-sm rounded-lg hover:text-white hover:bg-accent transition">Redirect</p>
+								</Link>
 								<ClipboardDocumentIcon
 									onClick={() => onClickCopy(link)}
 									className={`w-6 h-6 p-1 border border-gray-400 rounded-md hover:text-gray-500 ${
