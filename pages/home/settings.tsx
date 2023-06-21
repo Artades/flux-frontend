@@ -15,7 +15,7 @@ import { Loader2 } from "lucide-react";
 const Settings = () => {
 	const userData = useUserDataStore();
 	const [isCopied, setIsCopied] = useState(false);
-	const link = `http://localhost:3000/users/${userData?.userData?.nickName}`;
+	const link = `https://flux-pi.vercel.app/users/${userData?.userData?.nickName}`;
 	const router = useRouter();
 	const redirectToLink = useCallback(() => {
 		router.push(link);
