@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import * as Api from "@/api";
@@ -13,6 +13,7 @@ function classNames(...classes: string[]) {
 
 export default function Header() {
 	const router = useRouter();
+	const [menuOpen, setMenuOpen] = useState(false); 
 	const navigation = [
 		{
 			name: "My Links",
@@ -31,6 +32,9 @@ export default function Header() {
 		Api.auth.logout();
 		location.href = "/";
 	};
+	 const handleLinkClick = () => {
+			setMenuOpen(false); // Закрыть меню после нажатия на ссылку
+		};
 
 	const userData = useGetUserDataFromStore();
 
@@ -42,11 +46,19 @@ export default function Header() {
 						<div className="relative flex h-16 items-center justify-between">
 							<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
 								{/* Mobile menu button*/}
-								<Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-									{open ? (
-										<XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+								<Disclosure.Button className=" transition inline-flex items-center justify-center rounded-md p-2 text-gray-400  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+									{menuOpen ? (
+										<XMarkIcon
+											className="block h-6 w-6 "
+											aria-hidden="true"
+											onClick={() => setMenuOpen(!menuOpen)}
+										/>
 									) : (
-										<Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+										<Bars3Icon
+											className="block h-6 w-6"
+											aria-hidden="true"
+											onClick={() => setMenuOpen(!menuOpen)}
+										/>
 									)}
 								</Disclosure.Button>
 							</div>
@@ -152,31 +164,29 @@ export default function Header() {
 					</div>
 
 					<Transition
-						show={open}
-						enter="menu-slide-in"
-						enterFrom="transform opacity-0 -translate-x-full"
-						enterTo="transform opacity-100 translate-x-0"
-						leave="menu-slide-out"
-						leaveFrom="transform opacity-100 translate-x-0"
-						leaveTo="transform opacity-0 -translate-x-full"
+						show={menuOpen}
+						enter="transition ease-out duration-300"
+						enterFrom="opacity-0 translate-y-1"
+						enterTo="opacity-100 translate-y-0"
+						leave="transition ease-in duration-150"
+						leaveFrom="opacity-100 translate-y-0"
+						leaveTo="opacity-0 translate-y-1"
 					>
 						<Disclosure.Panel className="sm:hidden">
-							<div className="space-y-1 px-2 pb-3 pt-2">
+							<div className="px-2 pt-2 pb-3 space-y-1">
 								{navigation.map((item) => (
-									<Disclosure.Button
+									<Link
 										key={item.name}
-										as="a"
 										href={item.href}
+										onClick={handleLinkClick}
 										className={classNames(
-											item.current
-												? "bg-gray-900 text-white"
-												: "text-gray-800 hover:bg-gray-700 hover:text-white",
+											item.current ? "text-accent" : "text-gray-800 ",
 											"block rounded-md px-3 py-2 text-base font-medium"
 										)}
 										aria-current={item.current ? "page" : undefined}
 									>
 										{item.name}
-									</Disclosure.Button>
+									</Link>
 								))}
 							</div>
 						</Disclosure.Panel>

@@ -130,8 +130,8 @@ const Create = () => {
 return (
 	<>
 		<MetaHead title="Create New Link" />
-		<div className="w-full h-[80vh] flex items-center justify-center">
-			<div className="flex flex-col items-start gap-3 w-[500px] bg-white rounded-lg drop-shadow-lg px-10 py-12 ">
+		<div className="w-full  flex items-center justify-center">
+			<div className="flex flex-col items-start gap-3 w-[500px] bg-transparent rounded-lg px-10 py-12 ">
 				<h2 className="text-xl font-bold mb-6">Create Link</h2>
 				<div className="grid w-full items-center gap-3">
 					<Label htmlFor="link-name">App or Website Name</Label>
@@ -159,7 +159,7 @@ return (
 					<SelectTrigger>
 						<SelectValue placeholder="Choose the Icon" />
 					</SelectTrigger>
-					<SelectContent className="bg-white max-h-[200px] overflow-y-auto">
+					<SelectContent className="bg-white max-h-[300px] overflow-y-auto">
 						{links.map((link) => (
 							<SelectItem
 								key={link.id}
