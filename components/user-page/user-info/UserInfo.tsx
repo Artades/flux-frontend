@@ -2,7 +2,7 @@ import { User } from '@/api/dto/auth.dto';
 
 import React, { FC } from "react";
 import Image from "next/image";
-import { EnvelopeIcon } from '@heroicons/react/24/outline';
+import { CheckBadgeIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 import UserButton from '../user-button/UserButton';
 
 
@@ -12,7 +12,7 @@ interface UserInfoProps {
 const UserInfo:FC<UserInfoProps> = ({info}) => {
     return (
 			<div className="w-full bg-zinc-50 border border-slate-200 rounded-lg backdrop-blur-sm  transition duration-200">
-				<UserButton bio={info?.bio}  />
+				<UserButton bio={info?.bio} />
 				<div className="flex flex-col w-full items-center h-full p-8">
 					<Image
 						alt=""
@@ -26,18 +26,14 @@ const UserInfo:FC<UserInfoProps> = ({info}) => {
 						<h1 className="text-3xl text-gray-700 font-bold  flex items-center">
 							{info?.fullName}
 							{info?.isPrime && (
-								<img
-									className="ml-3 w-5 h-5"
-									src="/images/about/verificated.png"
-									alt=""
-								/>
+								<CheckBadgeIcon className='w-4 h-4 text-accent ' />
 							)}
 						</h1>
 						<p className="text-md my-3 text-neutral-400">{info?.activity}</p>
 					</div>
 					<div className="flex items-center">
 						<a
-							href={info?.email}
+							href={`mailto:${info?.email}`}
 							rel="noreferrer"
 							target="_blank"
 							className=" group flex items-center py-2 px-7 text-md font-bold rounded-md text-white bg-accent transition hover:shadow hover:bg-transparent hover:text-accent  border-2 border-fuchsia-500"

@@ -16,7 +16,7 @@ import Link from "next/link";
 const Settings = () => {
 	const userData = useUserDataStore();
 	const [isCopied, setIsCopied] = useState(false);
-	const link = `https://flux-pi.vercel.app/users/${userData?.userData?.nickName}`;
+	const link = `https://fluux.vercel.app/users/${userData?.userData?.nickName}`;
 	const router = useRouter();
 	const redirectToLink = useCallback(() => {
 		router.push(link);
