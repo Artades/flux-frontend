@@ -7,6 +7,18 @@ import { Input } from "../ui/Input";
 import { toast } from "react-toastify";
 import { setCookie } from "nookies";
 import { RegisterFormDTO } from "@/api/dto/auth.dto";
+import { RadioGroup, RadioGroupItem } from "../ui/RadioGroup";
+import { Label } from "../ui/Label";
+import { Calendar } from "@/components/ui/Calendar";
+import { format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "@/components/ui/Popover";
+import { Button } from "../ui/Button";
+import { cn } from "@/lib/utils";
 
 const RegisterModal = () => {
 	const loginModal = useLoginModal();
@@ -17,18 +29,35 @@ const RegisterModal = () => {
 	const [nickName, setNickName] = useState("");
 	const [fullName, setFullName] = useState("");
 	const [activity, setActivity] = useState("");
+	const [gender, setGender] = useState("");
+	const [dateOfBirth, setDateOfBirth] = useState<Date | undefined> ();
 
 	const [isLoading, setIsLoading] = useState(false);
 
 	const onSubmit = async (values: RegisterFormDTO) => {
 		try {
-			if(!fullName || !email || !password || !nickName || !activity ) {
-				toast.error("Fill all the fields")
+			if (
+				!fullName ||
+				!email ||
+				!password ||
+				!nickName ||
+				!activity ||
+				!gender ||
+				!dateOfBirth
+			) {
+				toast.error("Fill all the fields");
 				return;
 			}
+
+			// Convert dateOfBirth to Date object
+			const parsedDateOfBirth = dateOfBirth ? new Date(dateOfBirth) : undefined;
+
 			setIsLoading(true);
-			const { token } = await Api.auth.register(values);
-			toast.success(`Account Created!`);
+			const { token } = await Api.auth.register({
+				...values,
+				dateOfBirth: parsedDateOfBirth,
+			});
+			toast.success("Account Created!");
 			setCookie(null, "_token", token, {
 				path: "/",
 			});
@@ -48,8 +77,10 @@ const RegisterModal = () => {
 		activity,
 		isPrime: false,
 		bio: "There is no bio yet",
+		gender,
+		dateOfBirth
 	};
-
+ console.log(values.dateOfBirth);
 	const onToggle = useCallback(() => {
 		loginModal.onOpen();
 		registerModal.onClose();
@@ -91,6 +122,38 @@ const RegisterModal = () => {
 				value={activity}
 				disabled={isLoading}
 			/>
+	
+			<Input
+				type="date"
+				value={dateOfBirth ? format(dateOfBirth, "yyyy-MM-dd") : ""}
+				onChange={(e) =>
+					setDateOfBirth(e.target.value ? new Date(e.target.value) : undefined)
+				}
+				disabled={isLoading}
+				className={cn(
+					"w-[280px] justify-start text-left font-normal",
+					!dateOfBirth && "text-muted-foreground"
+				)}
+			/>
+			
+			<RadioGroup
+				onValueChange={(value) => setGender(value)}
+				defaultValue="male"
+				className="flex items-center py-5"
+			>
+				<div className="flex items-center space-x-2">
+					<RadioGroupItem value="male" id="r1" />
+					<Label className="text-slate-400" htmlFor="r1">
+						Male
+					</Label>
+				</div>
+				<div className="flex items-center space-x-2">
+					<RadioGroupItem value="female" id="r1" />
+					<Label className="text-slate-400" htmlFor="r1">
+						Female
+					</Label>
+				</div>
+			</RadioGroup>
 		</div>
 	);
 

@@ -42,7 +42,8 @@ const Modal: React.FC<ModalProps> = ({
 		<>
 			<div
 				className="
-				px-2
+				px-4
+				py-
           justify-center 
           items-center 
           flex 
@@ -57,7 +58,7 @@ const Modal: React.FC<ModalProps> = ({
           bg-opacity-70
         "
 			>
-				<div className="relative w-full lg:w-3/6 my-6 mx-auto lg:max-w-3xl h-auto ">
+				<div className="relative w-full lg:w-3/6 my-6 mx-auto lg:max-w-3xl h-auto animate-modal-slide-in ">
 					{/*content*/}
 					<div
 						className="
@@ -85,7 +86,9 @@ const Modal: React.FC<ModalProps> = ({
               rounded-t
               "
 						>
-							<h3 className="text-3xl font-semibold text-black">{title}</h3>
+							<h3 className="text-2xl font-semibold text-black lg:text-3xl">
+								{title}
+							</h3>
 							<button
 								className="
                   p-1 
@@ -101,9 +104,9 @@ const Modal: React.FC<ModalProps> = ({
 							</button>
 						</div>
 						{/*body*/}
-						<div className="relative p-10 flex-auto">{body}</div>
+						<div className="relative px-10   flex-auto">{body}</div>
 						{/*footer*/}
-						<div className="flex flex-col gap-2 p-10">
+						<div className="flex flex-col gap-2 px-10  py-4 ">
 							<Button
 								size={"lg"}
 								disabled={disabled}

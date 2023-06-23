@@ -1,7 +1,7 @@
 import axios from "axios";
 import { parseCookies } from "nookies";
 
-axios.defaults.baseURL = "https://flux-backend-ef92.onrender.com/";
+axios.defaults.baseURL = "http://localhost:7777/";
 
 axios.interceptors.request.use((config) => {
 	if (typeof window !== "undefined") {
