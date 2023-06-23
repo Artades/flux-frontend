@@ -26,7 +26,7 @@ const UserInfo:FC<UserInfoProps> = ({info}) => {
 						<h1 className="text-3xl text-gray-700 font-bold  flex items-center">
 							{info?.fullName}
 							{info?.isPrime && (
-								<CheckBadgeIcon className='w-4 h-4 text-accent ' />
+								<CheckBadgeIcon className='w-4 h-4 text-accent' />
 							)}
 						</h1>
 						<p className="text-md my-3 text-neutral-400">{info?.activity}</p>
