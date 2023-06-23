@@ -27,7 +27,7 @@ const Profile = () => {
 			<MetaHead title="Profile" />
 			<div className="border rounded-xl bg-gray-100 ">
 				<div className=" flex items-center justify-start  h-44 relative rounded-t-xl px-3">
-					<Avatar />
+					<Avatar  gender={userData?.gender}/>
 				</div>
 				<div className=" bg-white py-10 rounded-xl border-t border-t-gray-200 drop-shadow-md px-4">
 					<div className="flex flex-col">

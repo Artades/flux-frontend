@@ -4,6 +4,7 @@ import React, { FC } from "react";
 import Image from "next/image";
 import { CheckBadgeIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 import UserButton from '../user-button/UserButton';
+import Avatar from '@/components/profile/Avatar';
 
 
 interface UserInfoProps {
@@ -14,19 +15,12 @@ const UserInfo:FC<UserInfoProps> = ({info}) => {
 			<div className="w-full bg-zinc-50 border border-slate-200 rounded-lg backdrop-blur-sm  transition duration-200">
 				<UserButton bio={info?.bio} />
 				<div className="flex flex-col w-full items-center h-full p-8">
-					<Image
-						alt=""
-						src={"/images/user.png"}
-						quality={100}
-						width={40}
-						height={40}
-						className="w-40 h-40 rounded-full border-2 border-accent"
-					/>
+					<Avatar gender={info?.gender}/>
 					<div className="my-2 flex flex-col items-center">
 						<h1 className="text-3xl text-gray-700 font-bold  flex items-center">
 							{info?.fullName}
 							{info?.isPrime && (
-								<CheckBadgeIcon className='w-4 h-4 text-accent' />
+								<CheckBadgeIcon className='w-7 h-7 text-accent' />
 							)}
 						</h1>
 						<p className="text-md my-3 text-neutral-400">{info?.activity}</p>
