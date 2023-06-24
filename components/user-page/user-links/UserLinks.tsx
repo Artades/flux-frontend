@@ -8,7 +8,7 @@ interface UserLinksProps {
 
 const UserLinks: FC<UserLinksProps> = ({ links }) => {
 	return (
-		<div className="w-full  my-10 p-1">
+		<div className="w-full  my-10 p-2">
 			<div className="w-full grid gap-3 h-full grid-cols-2 lg:grid-cols-4">
 				{links &&
 					links.length &&

@@ -13,8 +13,8 @@ const Preview = () => {
 			<div className="w-full h-[80vh]">
 				<div className="w-full h-full flex flex-col items-center justify-center">
 					<div className="text-center flex flex-col items-center justify-center">
-						<h1 className="text-2xl lg:text-5xl font-bold tracking-tight text-gray-900 ">
-							<span className="text-accent">Flux</span> - Make your own
+						<h1 className="text-2xl lg:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-accent to-indigo-500 ">
+						Flux - Make your own
 							Link-Page
 						</h1>
 						<p className="mt-6 text-md lg:text-lg leading-8 text-gray-600 max-w-[600px]">

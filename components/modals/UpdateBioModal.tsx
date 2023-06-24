@@ -44,7 +44,7 @@ const UpdateModal: React.FC<UpdateBioModalProps> = ({ onBioUpdate }) => {
 				placeholder="Come up with new Bio"
 				onChange={(e) => setBio(e.target.value)}
 				value={bio}
-				className="resize-none"
+				className="resize-none h-[170px]"
 				disabled={isLoading}
 			/>
 		</div>

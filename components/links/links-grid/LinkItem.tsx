@@ -7,12 +7,12 @@ const LinkItem: FC<LinkItemProps> = ({
 	linkPath,
 	
 }) => {
-	console.log;
+
 	return (
 		<a href={linkPath} target="_blank" className="cursor-pointer">
 			<div
-				className={`w-full h-[160px] ease-in-out bg-zinc-50  duration-200   border border-slate-200 hover:border-accent/60 rounded-lg backdrop-blur-sm 
-				group   hover:shadow-accent/50
+				className={`w-full h-[160px] ease-in-out bg-white border border-slate-200 duration-200    drop-shadow-sm  hover:border-accent/60 rounded-lg 
+				group   
 					`}
 			>
 				<div className=" w-full h-full flex flex-col items-center justify-between py-3 group-hover:scale-[0.8] transition">

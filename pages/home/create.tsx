@@ -130,7 +130,7 @@ const Create = () => {
 return (
 	<>
 		<MetaHead title="Create New Link" />
-		<div className="w-full  flex items-center justify-center">
+		<div className="w-full  flex items-center justify-center ">
 			<div className="flex flex-col items-start gap-3 w-[500px] bg-transparent rounded-lg px-10 py-12 ">
 				<h2 className="text-xl font-bold mb-6">Create Link</h2>
 				<div className="grid w-full items-center gap-3">

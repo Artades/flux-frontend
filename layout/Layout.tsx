@@ -1,4 +1,5 @@
 import Header from "@/components/header/Header";
+import Navbar from "@/components/header/Navbar";
 import React, { FunctionComponent } from "react";
 
 
@@ -9,7 +10,7 @@ type LayoutProps = {
 const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
 	return (
 		<div className="min-h-screen  ">
-			<Header />
+			<Navbar />
 			<main className="container ">{children}</main>
 		</div>
 	);

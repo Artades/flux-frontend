@@ -23,16 +23,15 @@ module.exports = {
 					to: { height: 0 },
 				},
 				"modal-slide-in": {
-					from: {opacity: '40%', filter: 'blur(1px)' },
-					to: { opacity:'100%', filter: 'blur(0)' },
+					from: { opacity: "0%", transform: "scale(0)" },
+					to: { opacity: "100%", transform: "scale(1)" },
 				},
 				
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
-				"modal-slide-in": "modal-slide-in 0.3s ease-in",
-				
+				"modal-slide-in": "modal-slide-in 0.2s ease-in-out", 
 			},
 		},
 	},

@@ -20,7 +20,7 @@ const LinksGrid: FC<LinksProps> = ({ links, userData }) => {
 	}
 
 	return (
-		<div className="h-full w-full rounded-md drop-shadow-lg my-10 p-1">
+		<div className="h-full w-full  mt-10 px-2 transition duration-200">
 			<div className="w-full grid gap-3 h-full grid-cols-2 lg:grid-cols-4">
 				<ButtonItem  />
 				{links.map((link) => (

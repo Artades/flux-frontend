@@ -38,8 +38,8 @@ const onClickCopy = useCallback((link: string) => {
 	return (
 		<>
 			<MetaHead title="Settings" />
-			<div className="w-full flex flex-col items-start">
-				<h1 className="text-3xl text-gray-700 font-bold mb-10">Settings</h1>
+			<div className="w-full flex flex-col items-start mt-10">
+				<h1 className="text-3xl text-gray-700 font-bold mb-5">Settings</h1>
 
 				<Accordion type="single" collapsible className="w-full">
 					<AccordionItem value="item-1">
@@ -53,8 +53,10 @@ const onClickCopy = useCallback((link: string) => {
 						<AccordionTrigger>My personal link</AccordionTrigger>
 						<AccordionContent>
 							<div className="flex items-center gap-2 cursor-pointer">
-								<Link href={link}>
-									<p className="text-accent border border-accent px-2 py-1 text-sm rounded-lg hover:text-white hover:bg-accent transition">Redirect</p>
+								<Link href={link} onClick={redirectToLink}>
+									<p className="text-accent border border-accent px-2 py-1 text-sm rounded-lg hover:text-white hover:bg-accent transition">
+										Redirect
+									</p>
 								</Link>
 								<ClipboardDocumentIcon
 									onClick={() => onClickCopy(link)}
