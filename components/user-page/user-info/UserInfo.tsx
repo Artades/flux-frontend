@@ -12,7 +12,7 @@ interface UserInfoProps {
 }
 const UserInfo:FC<UserInfoProps> = ({info}) => {
     return (
-			<div className="w-full bg-white  border border-slate-200  drop-shadow-sm  rounded-lg backdrop-blur-sm  transition duration-200">
+			<div className="w-full border border-slate-200  drop-shadow-sm  rounded-lg backdrop-blur-md bg-white/50 transition duration-200">
 				<UserButton bio={info?.bio} />
 				<div className="flex flex-col w-full items-center h-full p-8">
 					<Avatar gender={info?.gender} />

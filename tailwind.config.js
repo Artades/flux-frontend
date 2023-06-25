@@ -26,12 +26,16 @@ module.exports = {
 					from: { opacity: "0%", transform: "scale(0)" },
 					to: { opacity: "100%", transform: "scale(1)" },
 				},
-				
+				"gradient-animation": {
+					from: { opacity: "0.3" },
+					to: { opacity: "1" },
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
-				"modal-slide-in": "modal-slide-in 0.2s ease-in-out", 
+				"modal-slide-in": "modal-slide-in 0.2s ease-in-out",
+				"gradient-animation": "gradient-animation 1s ease",
 			},
 		},
 	},
