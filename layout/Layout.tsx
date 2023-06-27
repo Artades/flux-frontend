@@ -1,4 +1,4 @@
-import Header from "@/components/header/Header";
+
 import Navbar from "@/components/header/Navbar";
 import React, { FunctionComponent } from "react";
 
