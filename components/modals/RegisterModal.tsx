@@ -9,15 +9,9 @@ import { setCookie } from "nookies";
 import { RegisterFormDTO } from "@/api/dto/auth.dto";
 import { RadioGroup, RadioGroupItem } from "../ui/RadioGroup";
 import { Label } from "../ui/Label";
-import { Calendar } from "@/components/ui/Calendar";
+
 import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from "@/components/ui/Popover";
-import { Button } from "../ui/Button";
+
 import { cn } from "@/lib/utils";
 
 const RegisterModal = () => {
@@ -29,7 +23,7 @@ const RegisterModal = () => {
 	const [nickName, setNickName] = useState("");
 	const [fullName, setFullName] = useState("");
 	const [activity, setActivity] = useState("");
-	const [gender, setGender] = useState("");
+	const [gender, setGender] = useState("male");
 	const [dateOfBirth, setDateOfBirth] = useState<Date | undefined> ();
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -80,7 +74,7 @@ const RegisterModal = () => {
 		gender,
 		dateOfBirth
 	};
- console.log(values.dateOfBirth);
+
 	const onToggle = useCallback(() => {
 		loginModal.onOpen();
 		registerModal.onClose();
