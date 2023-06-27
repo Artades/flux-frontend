@@ -26,9 +26,10 @@ const LinkItem: FC<LinkItemProps> = ({ linkName, linkIcon, linkPath }) => {
 			onMouseLeave={handleMouseLeave}
 		>
 			<div
-				className={`w-full h-[160px] ease-in-out backdrop-blur-md bg-white/50 border border-slate-200 duration-200 drop-shadow-sm hover:border-accent/60 rounded-lg group`}
+				className={`w-full h-[160px] transition duration-200 ease-in-out backdrop-blur-md bg-white/50 border border-slate-200  drop-shadow-sm hover:border-accent/60 rounded-lg group `}
+				
 			>
-				<div className="w-full h-full flex flex-col items-center justify-between py-3 group-hover:scale-[0.8] transition">
+				<div className="w-full h-full flex flex-col items-center justify-between py-3  transition">
 					<div className="w-full flex items-center justify-center">
 						<img
 							src={linkIcon}
@@ -36,7 +37,7 @@ const LinkItem: FC<LinkItemProps> = ({ linkName, linkIcon, linkPath }) => {
 							alt="Link"
 						/>
 					</div>
-					<p className="text-lg text-gray-700">{linkName}</p>
+					<p className="text-lg text-slate-700">{linkName}</p>
 				</div>
 			</div>
 		</a>

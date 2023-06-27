@@ -41,7 +41,7 @@ export default function Navbar() {
 
 	return (
 		<div className="bg-white ">
-			<div className="max-w-[1000px]  mx-auto">
+			<div className="max-w-[860px]  mx-auto">
 				<Transition.Root show={open} as={Fragment}>
 					<Dialog
 						as="div"

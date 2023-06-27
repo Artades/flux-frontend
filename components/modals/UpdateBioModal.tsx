@@ -55,7 +55,7 @@ const UpdateModal: React.FC<UpdateBioModalProps> = ({ onBioUpdate }) => {
 			disabled={isLoading}
 			isOpen={updateBioModal.isOpen}
 			title="Update Bio"
-			actionLabel="Change"
+			actionLabel="Save Changes"
 			onClose={updateBioModal.onClose}
 			onSubmit={() => updateBio(bio, userData?.id)}
 			body={bodyContent}

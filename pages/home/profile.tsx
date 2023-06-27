@@ -29,7 +29,12 @@ const Profile = () => {
 			<MetaHead title="Profile" />
 			<div className="border  border-slate-200 rounded-lg ">
 				<div className=" flex items-center justify-start  h-44 relative rounded-t-xl px-3">
-					<Avatar isPrime={userData?.isPrime} gender={userData?.gender} />
+					<Avatar gender={userData?.gender} />
+					<PencilSquareIcon
+						onClick={updateBioModal.onOpen}
+						title="Update Bio"
+						className="absolute top-3 right-5 w-6 h-6 text-neutral-600 hover:text-accent hover:cursor-pointer focus:text-accent"
+					/>
 				</div>
 				<div className=" bg-transparent py-10  border-t border-t-gray-200  px-4">
 					<div className="flex flex-col">
@@ -49,12 +54,8 @@ const Profile = () => {
 								<p className="w-60 h-5 bg-neutral-300 rounded-lg animate-pulse"></p>
 							)}
 							<p className="font-medium">
-								{bio && bio.length > 30 ? `${bio.slice(0, 30)}...` : bio}
+								{bio && bio.length > 37 ? `${bio.slice(0, 37)}...` : bio}
 							</p>
-							<PencilSquareIcon
-								onClick={updateBioModal.onOpen}
-								className="w-6 h-6 text-neutral-600 hover:text-accent hover:cursor-pointer focus:text-accent"
-							/>
 						</div>
 						{/* There has to be user's bio */}
 						<div className="flex items-center text-gray-700 font-bold gap-2 mb-5">
@@ -71,7 +72,7 @@ const Profile = () => {
 							)}
 							<p
 								className={`${
-									userData?.isPrime ? "text-yellow-600" : "text-neutral-500"
+									userData?.isPrime ? "text-accent" : "text-neutral-500"
 								}`}
 							>
 								{userData?.isPrime ? "Prime" : "Default"}{" "}

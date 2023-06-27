@@ -8,7 +8,7 @@ const UserButton = ({bio}: {bio:string | undefined}) => {
   const handleButtonClick = () => {
 		const CustomToast = () => (
 			<div className=''>
-				<h2 className='font-bold mb-2'>About Me</h2>
+				<h2 className='font-bold mb-2'>Bio:</h2>
 				<p>{bio}</p>
 			</div>
 		);
@@ -30,11 +30,11 @@ const UserButton = ({bio}: {bio:string | undefined}) => {
     return (
 			<button
 				onClick={handleButtonClick}
-				className="group absolute top-3 right-3 flex items-center justify-center p-1 rounded-lg border border-slate-700  hover:border-accent transition duration-200"
+				className="group  flex items-center justify-center p-1 rounded-lg border border-slate-600  hover:border-accent transition duration-200"
 			>
 				<ChatBubbleBottomCenterTextIcon
 					title="About Me"
-					className="group-hover:text-accent w-5 h-5  text-slate-700 text-sm transtion duration-200"
+					className="group-hover:text-accent w-5 h-5  text-slate-600 text-sm transtion duration-200"
 				/>
 			</button>
 		);

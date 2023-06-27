@@ -26,5 +26,5 @@ html{
 }
 
 .container{
-  @apply max-w-[1000px]  mx-auto px-3 py-10 
+  @apply max-w-[860px]  mx-auto px-3 py-10 
 }
