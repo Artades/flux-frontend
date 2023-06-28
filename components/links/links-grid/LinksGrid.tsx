@@ -3,7 +3,7 @@ import { LinkItemProps } from "@/api/dto/link.dto";
 import LinkItem from "./LinkItem";
 import ButtonItem from "./ButtonItem";
 import { User } from "@/api/dto/auth.dto";
-import * as Api from "@/api"
+
 
 interface LinksProps {
 	links: LinkItemProps[] | undefined;

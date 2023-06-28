@@ -6,7 +6,7 @@ export interface LinkItemProps {
 	linkPath: string;
 	linkIcon: string;
 	user: User;
-	onDelete: (id: number) => void;
+	onDelete?: (id: number ) => void | undefined;
 	
 }
 

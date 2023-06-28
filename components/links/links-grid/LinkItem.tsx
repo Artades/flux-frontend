@@ -5,10 +5,16 @@ import { useRouter } from "next/router";
 import * as Api from "@/api";
 import { toast } from "react-toastify";
 
-const LinkItem: FC<LinkItemProps> = ({ linkName, linkIcon, linkPath, id, onDelete }) => {
+const LinkItem: FC<LinkItemProps> = ({
+	linkName,
+	linkIcon,
+	linkPath,
+	id,
+	onDelete,
+}) => {
 	const router = useRouter();
 	const { setLinkColor } = useLinkColorStore();
-	 const [isDeleted, setIsDeleted] = useState(false);
+	const [isDeleted, setIsDeleted] = useState(false);
 
 	const handleMouseEnter = () => {
 		const linkAppName = linkIcon.substring(
@@ -22,22 +28,23 @@ const LinkItem: FC<LinkItemProps> = ({ linkName, linkIcon, linkPath, id, onDelet
 		setLinkColor("transparent");
 	};
 
-  const handleContextMenu = async (
+	const handleContextMenu = async (
 		event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
 	) => {
 		event.preventDefault();
 
 		if (router.pathname === "/home/links") {
-			const confirmed = window.confirm("Are you sure you want to delete this post?");
+			const confirmed = window.confirm(
+				"Are you sure you want to delete this post?"
+			);
 
 			if (confirmed) {
 				try {
-						setIsDeleted(true);
-					onDelete(id);
-				
+					setIsDeleted(true);
+					onDelete ? onDelete(id) : console.log("It's not clickable")
+
 					await Api.links.deleteLink(id);
 					toast.success("Link deleted");
-					
 				} catch (error) {
 					toast.error("Error deleting link");
 				}
