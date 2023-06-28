@@ -10,7 +10,7 @@ import useUserDataStore from "@/hooks/useUser";
 import * as Api from "@/api";
 import { useRouter } from "next/router";
 import { ClipboardDocumentIcon } from "@heroicons/react/24/outline";
-import { Loader2 } from "lucide-react";
+
 import Link from "next/link";
 
 const Settings = () => {
@@ -29,7 +29,7 @@ const onClickCopy = useCallback((link: string) => {
 			setIsCopied(true);
 			setTimeout(() => {
 				setIsCopied(false);
-			}, 300);
+			}, 1500);
 		})
 		.catch((error) => {
 			console.log("Error copying link:", error);
@@ -50,33 +50,30 @@ const onClickCopy = useCallback((link: string) => {
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="item-2">
-						<AccordionTrigger>My personal link</AccordionTrigger>
+						<AccordionTrigger>Share Your Page</AccordionTrigger>
 						<AccordionContent>
-							<div className="flex items-center gap-2 cursor-pointer">
-								<Link href={link} onClick={redirectToLink}>
-									<p className="text-accent border border-accent px-2 py-1 text-sm rounded-lg hover:text-white hover:bg-accent transition">
-										Redirect
-									</p>
-								</Link>
-								<ClipboardDocumentIcon
-									onClick={() => onClickCopy(link)}
-									className={`w-6 h-6 p-1 border border-gray-400 rounded-md hover:text-gray-500 ${
-										isCopied ? "hidden" : "text-gray-700 "
-									}`}
-								/>
-								{isCopied && (
-									<Loader2 className="text-green-600 w-3 h-3 animate-spin" />
-								)}
+							<div className="flex flex-col items-start gap-2 cursor-pointer">
+								<p className="text-sm text-neutral-500">
+									Tip: Paste this link anywhere!
+								</p>
+								<div className="flex items-center gap-2 mt-2">
+									<Link href={link} onClick={redirectToLink}>
+										<p className="text-accent border border-accent px-5 py-1  text-sm rounded-lg hover:text-white hover:bg-accent transition">
+											Visit 
+										</p>
+									</Link>
+									<ClipboardDocumentIcon
+										onClick={() => onClickCopy(link)}
+										className={`w-7 h-7 py-1 border border-gray-400 rounded-lg hover:text-gray-500 ${
+											isCopied ? "hidden" : "text-gray-700 "
+										}`}
+									/>
+									{isCopied && <p className="text-green-600">Copied!</p>}
+								</div>
 							</div>
 						</AccordionContent>
 					</AccordionItem>
-					<AccordionItem value="item-3">
-						<AccordionTrigger>Is it animated?</AccordionTrigger>
-						<AccordionContent>
-							Yes. It&apos;s animated by default, but you can disable it if you
-							prefer.
-						</AccordionContent>
-					</AccordionItem>
+					
 				</Accordion>
 			</div>
 		</>

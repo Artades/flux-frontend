@@ -6,6 +6,8 @@ export interface LinkItemProps {
 	linkPath: string;
 	linkIcon: string;
 	user: User;
+	onDelete: (id: number) => void;
+	
 }
 
 export interface CreateLinkProps {
