@@ -18,7 +18,7 @@ const LoginModal = () => {
 
 	const onSubmit = async (values: LoginFormDTO) => {
 		try {
-			if ( !email || !password ) {
+			if (!email.trim() || !password.trim()) {
 				toast.error("Fill all the fields");
 				return;
 			}

@@ -5,7 +5,7 @@ import Preview from "@/components/preview/Preview";
 export default function Home() {
 	return (
 		<>
-			<MetaHead title={"Flux - Make your Link"} />
+			<MetaHead title={"Flux • Make your Link Page"} />
 			<Preview />
 		</>
 	);

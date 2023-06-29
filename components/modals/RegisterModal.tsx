@@ -31,12 +31,12 @@ const RegisterModal = () => {
 	const onSubmit = async (values: RegisterFormDTO) => {
 		try {
 			if (
-				!fullName ||
-				!email ||
-				!password ||
-				!nickName ||
-				!activity ||
-				!gender ||
+				!fullName.trim() ||
+				!email.trim() ||
+				!password.trim() ||
+				!nickName.trim() ||
+				!activity.trim() ||
+				!gender.trim() ||
 				!dateOfBirth
 			) {
 				toast.error("Fill all the fields");
