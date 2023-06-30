@@ -107,7 +107,11 @@ const Create = () => {
 	const values = { linkName, linkPath, linkIcon };
 
 	const onSubmit = async (values: CreateLinkProps) => {
-		if (!values.linkName || !values.linkPath || !values.linkIcon) {
+		if (
+			!values.linkName.trim() ||
+			!values.linkPath.trim() ||
+			!values.linkIcon
+		) {
 			toast.error("Please fill in all the fields.");
 			return;
 		}
@@ -138,6 +142,7 @@ return (
 					<Input
 						name="link-name"
 						placeholder="Instagram"
+						maxLength={20}
 						value={linkName}
 						onChange={(e) => setLinkName(e.target.value)}
 					/>
