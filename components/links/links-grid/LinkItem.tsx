@@ -4,6 +4,7 @@ import { useLinkColorStore, getLinkColorByIcon } from "@/hooks/useLinkColor";
 import { useRouter } from "next/router";
 import * as Api from "@/api";
 import { toast } from "react-toastify";
+import { ArrowTopRightOnSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const LinkItem: FC<LinkItemProps> = ({
 	linkName,
@@ -28,34 +29,14 @@ const LinkItem: FC<LinkItemProps> = ({
 		setLinkColor("transparent");
 	};
 
-	const handleContextMenu = async (
-		event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+	const handleDeleteLink = async (
+	
 	) => {
-		event.preventDefault();
+	
 
 		if (router.pathname === "/home/links") {
 			const confirmed = window.confirm(
-				"Are you sure you want to delete this post?"
-			);
-
-			if (confirmed) {
-				try {
-					setIsDeleted(true);
-					onDelete ? onDelete(id) : console.log("It's not clickable")
-
-					await Api.links.deleteLink(id);
-					toast.success("Link deleted");
-				} catch (error) {
-					toast.error("Error deleting link");
-				}
-			}
-		}
-	};
-
-	const handleDeletingOnIos = async() => {
-		if (router.pathname === "/home/links") {
-			const confirmed = window.confirm(
-				"Are you sure you want to delete this post?"
+				"Are You Sure you want to Delete this Link?"
 			);
 
 			if (confirmed) {
@@ -70,34 +51,48 @@ const LinkItem: FC<LinkItemProps> = ({
 				}
 			}
 		}
-	}
+	};
 
-	return (
-		<a
-			href={linkPath}
-			target="_blank"
-			className={`cursor-pointer `}
-			onMouseEnter={handleMouseEnter}
-			onMouseLeave={handleMouseLeave}
-			onContextMenu={handleContextMenu}
-			onTouchStart={handleDeletingOnIos}
+	
+
+
+return (
+	<div
+		className={`cursor-pointer `}
+		onMouseEnter={handleMouseEnter}
+		onMouseLeave={handleMouseLeave}
+	>
+		<div
+			className={`group
+			 w-full relative h-[160px] transition duration-200 ease-in-out backdrop-blur-md bg-white/50 border border-slate-200  drop-shadow-sm hover:border-accent/60 rounded-lg group `}
 		>
-			<div
-				className={` w-full h-[160px] transition duration-200 ease-in-out backdrop-blur-md bg-white/50 border border-slate-200  drop-shadow-sm hover:border-accent/60 rounded-lg group `}
-			>
-				<div className="w-full h-full flex flex-col items-center justify-between py-3  transition">
-					<div className="w-full flex items-center justify-center">
-						<img
-							src={linkIcon}
-							className="drop-shadow-md h-[55px] w-[55px]"
-							alt="Link"
+			<div className=" hidden group-hover:block transition w-full h-full z-30 absolute rounded-lg backdrop-blur-[25px]  bg-white/80">
+				<div className="w-full h-full flex  items-center justify-center ">
+					<div className="w-full flex items-center  justify-center gap-3">
+						<TrashIcon
+							className="w-8 h-8 text-accent hover:text-accent/40 cursor-pointer "
+							onClick={handleDeleteLink}
+						/>
+						<ArrowTopRightOnSquareIcon
+							className="w-8 h-8 text-accent hover:text-accent/40 cursor-pointerF"
+							onClick={() => router.push(linkPath)}
 						/>
 					</div>
-					<p className="text-lg text-slate-700">{linkName}</p>
 				</div>
 			</div>
-		</a>
-	);
+			<div className="w-full h-full flex flex-col items-center justify-between py-3  transition">
+				<div className="w-full flex items-center justify-center">
+					<img
+						src={linkIcon}
+						className="drop-shadow-md h-[55px] w-[55px]"
+						alt="Link"
+					/>
+				</div>
+				<p className="text-lg text-slate-700">{linkName}</p>
+			</div>
+		</div>
+	</div>
+);
 };
 
 export default LinkItem;

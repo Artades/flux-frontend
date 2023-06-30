@@ -1,6 +1,7 @@
 import React, { FC } from "react";
-import LinkItem from "../../links/links-grid/LinkItem";
+
 import { LinkItemProps } from "@/api/dto/link.dto";
+import UserLinkItem from "./UserLinkItem";
 
 interface UserLinksProps {
 	links: LinkItemProps[] | undefined;
@@ -22,7 +23,7 @@ const UserLinks: FC<UserLinksProps> = ({ links }) => {
 					  ))
 					: // Если данные загружены, отображаем карточки LinkItem
 					  links.map((link) => (
-							<LinkItem
+							<UserLinkItem
 								key={link.id}
 								linkName={link.linkName}
 								linkIcon={link.linkIcon}
