@@ -28,25 +28,50 @@ const LinkItem: FC<LinkItemProps> = ({
 		setLinkColor("transparent");
 	};
 
-const handleDelete = async () => {
-	if (router.pathname === "/home/links") {
-		const confirmed = window.confirm(
-			"Are you sure you want to delete this post?"
-		);
+	const handleContextMenu = async (
+		event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+	) => {
+		event.preventDefault();
 
-		if (confirmed) {
-			try {
-				setIsDeleted(true);
-				onDelete ? onDelete(id) : console.log("It's not clickable");
+		if (router.pathname === "/home/links") {
+			const confirmed = window.confirm(
+				"Are you sure you want to delete this post?"
+			);
 
-				await Api.links.deleteLink(id);
-				toast.success("Link deleted");
-			} catch (error) {
-				toast.error("Error deleting link");
+			if (confirmed) {
+				try {
+					setIsDeleted(true);
+					onDelete ? onDelete(id) : console.log("It's not clickable")
+
+					await Api.links.deleteLink(id);
+					toast.success("Link deleted");
+				} catch (error) {
+					toast.error("Error deleting link");
+				}
+			}
+		}
+	};
+
+	const handleDeletingOnIos = async() => {
+		if (router.pathname === "/home/links") {
+			const confirmed = window.confirm(
+				"Are you sure you want to delete this post?"
+			);
+
+			if (confirmed) {
+				try {
+					setIsDeleted(true);
+					onDelete ? onDelete(id) : console.log("It's not clickable");
+
+					await Api.links.deleteLink(id);
+					toast.success("Link deleted");
+				} catch (error) {
+					toast.error("Error deleting link");
+				}
 			}
 		}
 	}
-};
+
 	return (
 		<a
 			href={linkPath}
@@ -54,8 +79,8 @@ const handleDelete = async () => {
 			className={`cursor-pointer `}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
-			onContextMenu={handleDelete}
-			onTouchStart={handleDelete}
+			onContextMenu={handleContextMenu}
+			onTouchStart={handleDeletingOnIos}
 		>
 			<div
 				className={` w-full h-[160px] transition duration-200 ease-in-out backdrop-blur-md bg-white/50 border border-slate-200  drop-shadow-sm hover:border-accent/60 rounded-lg group `}
