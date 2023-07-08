@@ -72,7 +72,8 @@ const RegisterModal = () => {
 		isPrime: false,
 		bio: "There is no bio yet",
 		gender,
-		dateOfBirth
+		dateOfBirth,
+		avatar: ""
 	};
 
 	const onToggle = useCallback(() => {

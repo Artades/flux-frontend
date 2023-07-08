@@ -22,7 +22,7 @@ const UserInfo:FC<UserInfoProps> = ({info}) => {
 				</div>
 			
 				<div className="flex flex-col w-full items-center h-full p-8">
-					<Avatar gender={info?.gender} />
+					<Avatar gender={info?.gender} avatar={info?.avatar} id={info?.id}/>
 					<div className="my-2 flex flex-col items-center">
 						<h1 className="text-3xl text-gray-700 font-bold  flex items-center">
 							{info?.fullName}

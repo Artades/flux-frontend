@@ -4,6 +4,7 @@ import {
 	LoginResponseDTO,
 	RegisterFormDTO,
 	RegisterResponseDTO,
+	UpdateUserAvatar,
 	UpdateUserBio,
 	User,
 } from "@/api/dto/auth.dto";
@@ -42,4 +43,26 @@ export const updateBio = async (
 	newBio: string
 ): Promise<UpdateUserBio> => {
 	return (await axios.patch(`/users/${userId}/bio`, { bio: newBio })).data;
+};
+
+
+export const updateAvatar = async (
+	userId: number,
+	avatar: FormData
+): Promise<UpdateUserAvatar> => {
+	return axios
+		.patch(`users/${userId}/avatar`, avatar)
+		.then((response) => response.data);
+};
+
+export const getAvatar = async (
+	userId: number 
+): Promise<{ avatar: string }> => {
+	try {
+		const response = await axios.get(`/avatars/${userId}`);
+		return response.data;
+	} catch (error) {
+		console.error("Error getting avatar:", error);
+		throw error;
+	}
 };

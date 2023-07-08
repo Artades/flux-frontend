@@ -1,14 +1,18 @@
 import MetaHead from "@/components/meta/MetaHead";
+import UpdateAvatarModal from "@/components/modals/UpdateAvatarUrl";
 import UpdateBioModal from "@/components/modals/UpdateBioModal";
 import Avatar from "@/components/profile/Avatar";
+import useUpdateAvatarModal from "@/hooks/useUpdateAvatarModal";
+
 import useUpdateBioModal from "@/hooks/useUpdateBioModal";
 import { useGetUserDataFromStore } from "@/hooks/useUser";
-import { CalendarIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
+import { CalendarIcon,  PencilSquareIcon, PhotoIcon } from "@heroicons/react/24/outline";
 import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
 
 const Profile = () => {
 	 const userData = useGetUserDataFromStore();
+	 const updateAvatarModal = useUpdateAvatarModal()
 	const updateBioModal = useUpdateBioModal();
 	const [bio, setBio] = useState(userData?.bio);
 
@@ -26,17 +30,27 @@ const Profile = () => {
 	return (
 		<>
 			<UpdateBioModal onBioUpdate={handleUpdateBio} />
+			<UpdateAvatarModal  />
 			<MetaHead title="Profile" />
-			<div className="border  border-slate-200 rounded-lg ">
-				<div className=" flex items-center justify-start  h-44 relative rounded-t-xl px-3">
-					<Avatar gender={userData?.gender} />
+			<div className=" bg-white border  border-slate-200 rounded-lg ">
+				<div className=" flex items-center justify-between h-44 relative rounded-t-xl px-3">
+					<div className="relative">
+						<div
+							onClick={updateAvatarModal.onOpen}
+							className=" absolute top-0  bg-white right-0 w-8 h-8 rounded-full flex justify-center items-center border rounded"
+						>
+							<PhotoIcon className=" w-5 h-5 text-neutral-600 hover:text-accent hover:cursor-pointer focus:text-accent" />
+						</div>
+						<Avatar avatar={userData?.avatar} gender={userData?.gender} id={userData?.id}/>
+					</div>
+
 					<PencilSquareIcon
 						onClick={updateBioModal.onOpen}
 						title="Update Bio"
 						className="absolute top-3 right-5 w-6 h-6 text-neutral-600 hover:text-accent hover:cursor-pointer focus:text-accent"
 					/>
 				</div>
-				<div className=" bg-transparent py-10  border-t border-t-gray-200  px-4">
+				<div className=" bg-white py-10  border-t border-t-gray-200  px-4">
 					<div className="flex flex-col">
 						{!userData && (
 							<p className="w-60 h-5 bg-neutral-300 rounded-lg animate-pulse"></p>
@@ -47,25 +61,16 @@ const Profile = () => {
 
 						<p className="text-md text-neutral-500">@{userData?.nickName}</p>
 					</div>
-					<div className="flex flex-col mt-5">
-						<div className="flex items-start text-gray-700 font-bold gap-2 mb-5">
-							Bio:
-							{!userData && (
-								<p className="w-60 h-5 bg-neutral-300 rounded-lg animate-pulse"></p>
-							)}
-							<p className="font-medium">
-								{bio && bio.length > 37 ? `${bio.slice(0, 37)}...` : bio}
-							</p>
-						</div>
+					<div className="flex flex-col mt-5 gap-2">
 						{/* There has to be user's bio */}
-						<div className="flex items-center text-gray-700 font-bold gap-2 mb-5">
+						<div className="flex items-center text-gray-700 font-bold gap-2 ">
 							Email:
 							{!userData && (
 								<p className="w-60 h-5 bg-neutral-300 rounded-lg animate-pulse"></p>
 							)}
 							<p className="text-accent">{userData?.email}</p>
 						</div>
-						<div className="flex items-center text-gray-700 font-bold gap-2 mb-5">
+						<div className="flex items-center text-gray-700 font-bold gap-2 ">
 							Account:
 							{!userData && (
 								<p className="w-60 h-5 bg-neutral-300 rounded-lg animate-pulse"></p>
@@ -76,6 +81,14 @@ const Profile = () => {
 								}`}
 							>
 								{userData?.isPrime ? "Prime" : "Default"}{" "}
+							</p>
+						</div>
+						<div className="flex flex-col items-start text-gray-700 font-bold gap-2 mb-5 border-t border-b  py-4">
+							{!userData && (
+								<p className="w-60 h-5 bg-neutral-300 rounded-lg animate-pulse"></p>
+							)}
+							<p className="font-medium max-w-[400px]">
+								{bio && bio.length > 100 ? `${bio.slice(0, 100)} ...` : bio}
 							</p>
 						</div>
 						<div className="flex flex-row items-center gap-2 mt-4 text-neutral-500">

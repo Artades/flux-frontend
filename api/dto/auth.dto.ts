@@ -15,6 +15,7 @@ export type RegisterFormDTO = LoginFormDTO & {
 	isPrime: boolean;
 	gender: string;
 	dateOfBirth: Date | undefined;
+	avatar: string | undefined;
 };
 export type RegisterResponseDTO = LoginResponseDTO;
 
@@ -28,8 +29,13 @@ export interface User {
 	bio: string;
 	gender: string;
 	dateOfBirth: Date;
+	avatar: string;
 }
 export interface UpdateUserBio {
 	id: number;
 	bio: string;
+}
+export interface UpdateUserAvatar {
+	id: number;
+	avatar: File;
 }

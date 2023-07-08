@@ -1,14 +1,23 @@
-import React from "react";
-import Image from "next/image";
+import { Loader2 } from "lucide-react";
+
 
 const Avatar = ({
 	gender,
-	isPrime,
+	
+	avatar,
+	id,
 }: {
 	gender: string | undefined;
 	isPrime?: boolean | undefined;
+	avatar?: string | undefined;
+	id?: number ;
 }) => {
 	let imageUrl;
+
+	
+	
+if (avatar === "" ) {
+	
 	switch (gender) {
 		case "male":
 			imageUrl = "/images/user-mal.png";
@@ -20,23 +29,31 @@ const Avatar = ({
 			imageUrl = ""; // Путь к изображению по умолчанию
 			break;
 	}
+} else if( typeof id !== undefined ){
+	imageUrl = `https://flux-backnd-11a895dcfc01.herokuapp.com/avatars/${id}`;
+	
+}
 
+
+	
 	return (
-		<div
-			className={`flex items-center justify-center rounded-full ${
-				isPrime ? "bg-gradient-to-r from-accent to-indigo-500" : "bg-accent"
-			} p-1`}
-		>
-			<Image
-				alt="Avatar"
-				className="w-32 h-32 bg-white rounded-full"
-				src={imageUrl}
-				width={40}
-				height={40}
-				quality={80}
-			/>
-		</div>
+		<>
+			<div
+				className={` w-36 h-36 flex items-center justify-center rounded-full border-dotted border-4 border-accent `}
+			>
+				{!id ? (
+					<Loader2 className="w-5 h-5 animate-spin " />
+				) : (
+					<img
+						alt="Avatar"
+						className=" flex items-center justify-center w-32 h-32 bg-white rounded-full object-cover"
+						src={imageUrl}
+					/>
+				)}
+			</div>
+		</>
 	);
 };
+
 
 export default Avatar;
