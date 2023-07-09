@@ -3,7 +3,7 @@ import { parseCookies } from "nookies";
 
 
 
-axios.defaults.baseURL = " https://flux-backnd-11a895dcfc01.herokuapp.com/";
+axios.defaults.baseURL = "https://fluux-server-0712fc9cf32e.herokuapp.com/";
 
 
 axios.interceptors.request.use((config) => {

@@ -30,7 +30,7 @@ if (avatar === "" ) {
 			break;
 	}
 } else if( typeof id !== undefined ){
-	imageUrl = `https://flux-backnd-11a895dcfc01.herokuapp.com/avatars/${id}`;
+	imageUrl = `https://fluux-server-0712fc9cf32e.herokuapp.com/avatars/${id}`;
 	
 }
 
