@@ -36,7 +36,7 @@ const Profile = () => {
 				<div className=" flex items-center justify-between h-44 relative rounded-t-xl px-3">
 					<div className="relative">
 						<div
-							onClick={updateAvatarModal.onOpen}
+							onClick={() => alert("Developing now ...")}
 							className=" absolute top-0  bg-white right-0 w-8 h-8 rounded-full flex justify-center items-center border rounded"
 						>
 							<PhotoIcon className=" w-5 h-5 text-neutral-600 hover:text-accent hover:cursor-pointer focus:text-accent" />

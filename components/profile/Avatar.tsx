@@ -16,8 +16,24 @@ const Avatar = ({
 
 	
 	
-if (avatar === "" ) {
+// if (avatar === "" ) {
 	
+// 	switch (gender) {
+// 		case "male":
+// 			imageUrl = "/images/user-mal.png";
+// 			break;
+// 		case "female":
+// 			imageUrl = "/images/user-female.png";
+// 			break;
+// 		default:
+// 			imageUrl = ""; // Путь к изображению по умолчанию
+// 			break;
+// 	}
+// } else if( typeof id !== undefined ){
+// 	imageUrl = `https://fluux-server-0712fc9cf32e.herokuapp.com/avatars/${id}`;
+	
+// }
+
 	switch (gender) {
 		case "male":
 			imageUrl = "/images/user-mal.png";
@@ -29,10 +45,6 @@ if (avatar === "" ) {
 			imageUrl = ""; // Путь к изображению по умолчанию
 			break;
 	}
-} else if( typeof id !== undefined ){
-	imageUrl = `https://fluux-server-0712fc9cf32e.herokuapp.com/avatars/${id}`;
-	
-}
 
 
 	
