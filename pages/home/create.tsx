@@ -15,6 +15,9 @@ import { Label } from "@/components/ui/Label";
 import MetaHead from "@/components/meta/MetaHead";
 import { Loader2 } from "lucide-react";
 
+
+
+
 const Create = () => {
 	const [linkName, setLinkName] = useState("");
 	const [linkPath, setLinkPath] = useState("");
@@ -104,6 +107,8 @@ const Create = () => {
 		},
 	];
 
+
+
 	const values = { linkName, linkPath, linkIcon };
 
 	const onSubmit = async (values: CreateLinkProps) => {
@@ -118,6 +123,7 @@ const Create = () => {
 		setIsLoading(true);
 		try {
 			await Api.links.createLink(values);
+
 			toast.success("Link Created!");
 			setLinkName("");
 			setLinkPath("");
@@ -171,7 +177,11 @@ return (
 								className="hover:text-gray-200 "
 								value={link.href}
 							>
-								{link.name}
+								
+								<div className="w-full flex items-center gap-1">
+									<img className="w-7 h-7 rounded-full p-1" src={link.href}  alt={"Link"}/>
+									<p>{link.name}</p>
+								</div>
 							</SelectItem>
 						))}
 					</SelectContent>

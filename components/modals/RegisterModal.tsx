@@ -51,7 +51,7 @@ const RegisterModal = () => {
 				...values,
 				dateOfBirth: parsedDateOfBirth,
 			});
-			toast.success("Account Created!");
+			toast.success("Account Created! ");
 			setCookie(null, "_token", token, {
 				path: "/",
 			});
@@ -70,7 +70,7 @@ const RegisterModal = () => {
 		nickName,
 		activity,
 		isPrime: false,
-		bio: "There is no bio yet",
+		bio: "No bio yet",
 		gender,
 		dateOfBirth,
 		avatar: ""

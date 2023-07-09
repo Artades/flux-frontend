@@ -25,7 +25,7 @@ const LoginModal = () => {
 			setIsLoading(true);
 			const { token } = await Api.auth.login(values);
 
-			toast.success(`Hello`);
+			toast.success(`Signed In!`);
 			setCookie(null, "_token", token, {
 				path: "/",
 			});

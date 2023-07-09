@@ -3,7 +3,7 @@ import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, LinkIcon, PlusCircleIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { Loader2 } from "lucide-react";
+import {CrownIcon, Loader2} from "lucide-react";
 import { useGetUserDataFromStore } from "@/hooks/useUser";
 import { useRouter } from "next/router";
 
@@ -139,11 +139,25 @@ export default function Navbar() {
 									<div className="absolute inset-y-0 right-3 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
 										<Menu as="div" className="relative ml-3">
 											<div>
+
 												<Menu.Button className="flex h-9 w-9 rounded-full ring-2 ring-neutral-600 text-sm focus:outline-none focus:ring-accent items-center justify-center">
 													{userData ? (
-														<p className="font-bold text-gray-800 text-lg">
-															{userData?.fullName.split(" ")[0][0]}
-														</p>
+														<div className="flex items-center justify-start">
+															{
+																userData?.isPrime ? (
+																	<CrownIcon className="w-4 h-4 text-accent"/>
+
+																): (
+																	<p className="font-bold text-gray-800 text-lg">
+																		{userData?.fullName.split(" ")[0][0]}
+																	</p>
+																)
+
+															}
+
+														</div>
+
+
 													) : (
 														<Loader2 className="text-slate-500 h-4 w-4 animate-spin" />
 													)}
