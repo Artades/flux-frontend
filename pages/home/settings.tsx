@@ -50,7 +50,7 @@ const onClickCopy = useCallback((link: string) => {
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="item-2">
-						<AccordionTrigger>Share Your Page</AccordionTrigger>
+						<AccordionTrigger>Share your page</AccordionTrigger>
 						<AccordionContent>
 							<div className="flex flex-col items-start gap-2 cursor-pointer">
 								<p className="text-sm text-neutral-500">
@@ -71,6 +71,24 @@ const onClickCopy = useCallback((link: string) => {
 									{isCopied && <p className="text-green-600">Copied!</p>}
 								</div>
 							</div>
+						</AccordionContent>
+					</AccordionItem>
+					<AccordionItem value="item-3">
+						<AccordionTrigger >
+							What does Prime status do?
+						</AccordionTrigger>
+						<AccordionContent className="">
+							<ul className="list-disc flex flex-col items-start gap-3">
+								<li className="">
+									<span className="font-semibold">Ability to have a custom avatar:</span> With Prime status, you can set and use your own custom avatar, giving your profile a personalized touch.
+								</li>
+								<li className="">
+									<span className="font-semibold">Ability to receive donations from foreigners:</span> As a Prime member, you can accept donations from users all around the world via Ko-Fi, allowing you to receive financial support and gratitude from a global community.
+								</li>
+								<li>
+									<span className="font-semibold">Ability to attach your own card:</span> Prime status enables you to attach your own card to your account, giving you the convenience to make payments, purchases, and other financial transactions directly through the platform.
+								</li>
+							</ul>
 						</AccordionContent>
 					</AccordionItem>
 					

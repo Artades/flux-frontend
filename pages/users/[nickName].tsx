@@ -6,6 +6,7 @@ import UserInfo from "@/components/user-page/user-info/UserInfo";
 import { LinkItemProps } from "@/api/dto/link.dto";
 import UserLinks from "@/components/user-page/user-links/UserLinks";
 import MetaHead from "@/components/meta/MetaHead";
+import {UserPlusIcon} from "@heroicons/react/24/outline";
 
 
 
@@ -58,6 +59,7 @@ const UserPage = () => {
 			>
 				
 				<div className="container">
+
 					<UserInfo info={userData} />
 					<UserLinks links={links} />
 				</div>

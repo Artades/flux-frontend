@@ -18,11 +18,15 @@ import { Loader2 } from "lucide-react";
 
 
 
+
+
+
 const Create = () => {
 	const [linkName, setLinkName] = useState("");
 	const [linkPath, setLinkPath] = useState("");
 	const [linkIcon, setLinkIcon] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
+
 
 	const links = [
 		{
@@ -122,8 +126,10 @@ const Create = () => {
 		}
 		setIsLoading(true);
 		try {
+			const dingSoundPath = "/sounds/ding.mp3";
+			const dingAudio = new Audio(dingSoundPath);
+			await dingAudio.play();
 			await Api.links.createLink(values);
-
 			toast.success("Link Created!");
 			setLinkName("");
 			setLinkPath("");
